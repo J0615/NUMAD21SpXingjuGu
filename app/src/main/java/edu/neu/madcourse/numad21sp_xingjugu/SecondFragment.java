@@ -35,46 +35,46 @@ public class SecondFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.button_1).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.button_A).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                response.setText("You pressed: button 1");
+                response.setText("You pressed: button A");
             }
         });
 
 
-        view.findViewById(R.id.button_2).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.button_B).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                response.setText("You pressed: button 2");
+                response.setText("You pressed: button B");
             }
         });
 
-        view.findViewById(R.id.button_3).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.button_C).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                response.setText("You pressed: button 3");
+                response.setText("You pressed: button C");
             }
         });
 
-        view.findViewById(R.id.button_4).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.button_D).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                response.setText("You pressed: button 4");
+                response.setText("You pressed: button D");
             }
         });
 
-        view.findViewById(R.id.button_5).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.button_E).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                response.setText("You pressed: button 5");
+                response.setText("You pressed: button E");
             }
         });
 
-        view.findViewById(R.id.button_6).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.button_F).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                response.setText("You pressed: button 6");;
+                response.setText("You pressed: button F");;
             }
         });
 
