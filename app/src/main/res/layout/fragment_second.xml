@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/previous"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/pressed_response"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textview_second" />
@@ -38,22 +38,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.gridlayout.widget.GridLayout
-        android:layout_width="337dp"
-        android:layout_height="172dp"
-        android:layout_marginTop="96dp"
+        android:layout_width="261dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="84dp"
         android:background="#FFFFFF"
         android:padding="1px"
+        app:columnCount="3"
+        app:layout_constraintBottom_toTopOf="@+id/button_second"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.783"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:rowCount="2"
         tools:ignore="MissingConstraints">
+
 
         <Button
             android:id="@+id/button_A"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1"
+            android:text="A"
             app:layout_column="0"
             app:layout_row="0" />
 
@@ -61,7 +65,7 @@
             android:id="@+id/button_B"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2"
+            android:text="B"
             app:layout_column="1"
             app:layout_row="0" />
 
@@ -69,7 +73,7 @@
             android:id="@+id/button_C"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3"
+            android:text="C"
             app:layout_column="2"
             app:layout_row="0" />
 
@@ -77,7 +81,7 @@
             android:id="@+id/button_D"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4"
+            android:text="D"
             app:layout_column="0"
             app:layout_row="1" />
 
@@ -85,7 +89,7 @@
             android:id="@+id/button_E"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5"
+            android:text="E"
             app:layout_column="1"
             app:layout_row="1" />
 
@@ -93,7 +97,7 @@
             android:id="@+id/button_F"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="6"
+            android:text="F"
             app:layout_row="1" />
     </androidx.gridlayout.widget.GridLayout>
 
