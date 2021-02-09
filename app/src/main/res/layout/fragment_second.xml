@@ -31,19 +31,16 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="356dp"
-        android:layout_marginEnd="176dp"
+        android:layout_marginTop="388dp"
         android:text="Xingju Gu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="337dp"
         android:layout_height="172dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="96dp"
         android:background="#FFFFFF"
         android:padding="1px"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,19 +82,28 @@
             app:layout_row="1" />
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/button_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
+            android:text="5"
             app:layout_column="1"
             app:layout_row="1" />
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/button_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
+            android:text="6"
             app:layout_row="1" />
     </androidx.gridlayout.widget.GridLayout>
+
+    <TextView
+        android:id="@+id/pressed_response"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You pressed: "
+        tools:layout_editor_absoluteX="173dp"
+        tools:layout_editor_absoluteY="324dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
