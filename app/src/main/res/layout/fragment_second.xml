@@ -30,26 +30,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
-        android:layout_marginTop="211dp"
+        android:layout_marginTop="356dp"
         android:layout_marginEnd="176dp"
-        android:layout_marginBottom="53dp"
         android:text="Xingju Gu"
-        app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/email"
-        android:layout_width="165dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="123dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="123dp"
-        android:layout_marginBottom="144dp"
-        android:text="gu.xing@northeastern.edu"
-        app:layout_constraintBottom_toTopOf="@+id/button_second"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="337dp"
+        android:layout_height="172dp"
+        android:background="#FFFFFF"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="88dp"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+    </androidx.gridlayout.widget.GridLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
