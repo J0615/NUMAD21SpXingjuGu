@@ -46,7 +46,7 @@ public class LinkCollector extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int pos = 0;
-                LinearLayout dialog_layout= new LinearLayout(LinkCollector.this);
+                LinearLayout dialog_layout = new LinearLayout(LinkCollector.this);
                 AlertDialog.Builder builder = new AlertDialog.Builder(LinkCollector.this);
                 builder.setTitle("Input: name and url");
 
@@ -66,9 +66,9 @@ public class LinkCollector extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         String url_name = input_name.getText().toString();
                         String url_link = input_url.getText().toString();
-                        if( URLUtil.isValidUrl(url_link)){
+                        if (URLUtil.isValidUrl(url_link)) {
                             addItem(pos, url_name, url_link);
-                        }else{
+                        } else {
                             Toast.makeText(LinkCollector.this, "Invaldi URL", Toast.LENGTH_SHORT).show();
                         }
 
@@ -86,9 +86,6 @@ public class LinkCollector extends AppCompatActivity {
                 //pop up window to input url name and link
 
 
-
-
-
             }
         });
     }
@@ -102,75 +99,72 @@ public class LinkCollector extends AppCompatActivity {
         int size = itemList == null ? 0 : itemList.size();
         outState.putInt(NUMBER_OF_ITEMS, size);
 
-        // Need to generate unique key for each item
-        // This is only a possible way to do, please find your own way to generate the key
         for (int i = 0; i < size; i++) {
             // put itemName information into instance
-            outState.putString(KEY_OF_INSTANCE + i + "0", itemList.get(i).getItemName());
+            outState.putString(KEY_OF_INSTANCE + i + "0", itemList.get(i).getURLName());
             // put itemDesc information into instance
-            outState.putString(KEY_OF_INSTANCE + i + "1", itemList.get(i).getItemDesc());
+            outState.putString(KEY_OF_INSTANCE + i + "1", itemList.get(i).getURLLink());
         }
         super.onSaveInstanceState(outState);
 
     }
 
 
+    private void init(Bundle savedInstanceState) {
 
-        private void init (Bundle savedInstanceState){
+        initialItemData(savedInstanceState);
+        createRecyclerView();
+    }
 
-            initialItemData(savedInstanceState);
-            createRecyclerView();
-        }
+    private void initialItemData(Bundle savedInstanceState) {
 
-        private void initialItemData (Bundle savedInstanceState){
+        // Not the first time to open this Activity
+        if (savedInstanceState != null && savedInstanceState.containsKey(NUMBER_OF_ITEMS)) {
+            if (itemList == null || itemList.size() == 0) {
 
-            // Not the first time to open this Activity
-            if (savedInstanceState != null && savedInstanceState.containsKey(NUMBER_OF_ITEMS)) {
-                if (itemList == null || itemList.size() == 0) {
+                int size = savedInstanceState.getInt(NUMBER_OF_ITEMS);
 
-                    int size = savedInstanceState.getInt(NUMBER_OF_ITEMS);
+                // Retrieve keys we stored in the instance
+                for (int i = 0; i < size; i++) {
+                    String itemName = savedInstanceState.getString(KEY_OF_INSTANCE + i + "0");
+                    String itemDesc = savedInstanceState.getString(KEY_OF_INSTANCE + i + "1");
 
-                    // Retrieve keys we stored in the instance
-                    for (int i = 0; i < size; i++) {
-                        String itemName = savedInstanceState.getString(KEY_OF_INSTANCE + i + "0");
-                        String itemDesc = savedInstanceState.getString(KEY_OF_INSTANCE + i + "1");
+                    URLItem url_item = new URLItem(itemName, itemDesc);
 
-                        URLItem url_item = new URLItem(itemName, itemDesc);
-
-                        itemList.add(url_item);
-                    }
+                    itemList.add(url_item);
                 }
             }
-
         }
 
-        private void createRecyclerView () {
-            rLayoutManger = new LinearLayoutManager(this);
-
-            recyclerView = findViewById(R.id.recycler_view);
-            recyclerView.setHasFixedSize(true);
-
-            rviewAdapter = new RviewAdapter(itemList);
-            ItemClickListener itemClickListener = new ItemClickListener() {
-                @Override
-                public Intent onItemClick(int position) {
-                    //attributions bond to the item has been changed
-                    Intent intent = itemList.get(position).onItemClick(position);
-                    rviewAdapter.notifyItemChanged(position);
-                    return intent;
-                }
-            };
-            rviewAdapter.setOnItemClickListener(itemClickListener);
-
-            recyclerView.setAdapter(rviewAdapter);
-            recyclerView.setLayoutManager(rLayoutManger);
-
-
-        }
-
-        private void addItem ( int position, String URL_name, String URL_link){
-            itemList.add(position, new URLItem(URL_name, URL_link));
-            Toast.makeText(LinkCollector.this, "Successfully added new link", Toast.LENGTH_SHORT).show();
-            rviewAdapter.notifyItemInserted(position);
-        }
     }
+
+    private void createRecyclerView() {
+        rLayoutManger = new LinearLayoutManager(this);
+
+        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+
+        rviewAdapter = new RviewAdapter(itemList);
+        ItemClickListener itemClickListener = new ItemClickListener() {
+            @Override
+            public Intent onItemClick(int position) {
+                //attributions bond to the item has been changed
+                Intent intent = itemList.get(position).onItemClick(position);
+                rviewAdapter.notifyItemChanged(position);
+                return intent;
+            }
+        };
+        rviewAdapter.setOnItemClickListener(itemClickListener);
+
+        recyclerView.setAdapter(rviewAdapter);
+        recyclerView.setLayoutManager(rLayoutManger);
+
+
+    }
+
+    private void addItem(int position, String URL_name, String URL_link) {
+        itemList.add(position, new URLItem(URL_name, URL_link));
+        Toast.makeText(LinkCollector.this, "Successfully added new link", Toast.LENGTH_SHORT).show();
+        rviewAdapter.notifyItemInserted(position);
+    }
+}
