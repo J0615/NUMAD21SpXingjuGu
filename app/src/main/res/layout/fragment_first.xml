@@ -37,4 +37,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_first"
         app:layout_constraintVertical_bias="0.294" />
+
+    <Button
+        android:id="@+id/locator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Locator"
+        tools:layout_editor_absoluteX="154dp"
+        tools:layout_editor_absoluteY="377dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
