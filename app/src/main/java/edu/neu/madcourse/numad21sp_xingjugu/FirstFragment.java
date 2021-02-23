@@ -39,5 +39,14 @@ public class FirstFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        view.findViewById(R.id.locator).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getActivity(), ActivityLocator.class);
+                startActivity(intent);
+            }
+        })
+        ;
     }
 }

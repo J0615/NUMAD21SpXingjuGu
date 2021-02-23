@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_xg_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NUMAD21SpXingjuGu">
-        <activity android:name=".activity_locator"></activity>
+        <activity android:name=".ActivityLocator"></activity>
         <activity android:name=".LinkCollector" />
         <activity
             android:name=".MainActivity"
@@ -21,6 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
     </application>
+
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>
