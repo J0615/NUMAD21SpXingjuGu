@@ -40,8 +40,13 @@ public class ServiceActivity extends AppCompatActivity {
     }
 
     public void callWebserviceButtonHandler(View view){
-        PingWebServiceTask task = new PingWebServiceTask();
-        task.execute(mURLEditText.getText().toString()); // This is a security risk.  Don't let your user enter the URL in a real app.
+
+//        PingWebServiceTask task = new PingWebServiceTask();
+//        task.execute(mURLEditText.getText().toString());
+//
+
+        Run p = new Run();
+        new Thread(p).start();
 
     }
 
@@ -69,7 +74,11 @@ public class ServiceActivity extends AppCompatActivity {
                 conn.setRequestMethod("GET");
                 conn.setDoInput(true);
 
+                TextView result_view = (TextView)findViewById(R.id.result_textview);
+                result_view.setText("Connecting");
                 conn.connect();
+
+
 
                 // Read response.
                 InputStream inputStream = conn.getInputStream();
@@ -109,14 +118,22 @@ public class ServiceActivity extends AppCompatActivity {
     }
 
 
-    /**
-     * Helper function
-     * @param is
-     * @return
-     */
     private String convertStreamToString(InputStream is) {
         Scanner s = new Scanner(is).useDelimiter("\\A");
         return s.hasNext() ? s.next().replace(",", ",\n") : "";
     }
 
+
+    private class Run implements Runnable {
+        PingWebServiceTask task = new PingWebServiceTask();
+
+        @Override
+        public void run() {
+            task.execute(mURLEditText.getText().toString());
+
+        }
+    }
+
+
 }
+
