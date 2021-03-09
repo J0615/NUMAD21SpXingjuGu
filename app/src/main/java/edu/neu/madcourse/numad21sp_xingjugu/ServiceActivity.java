@@ -34,16 +34,12 @@ public class ServiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service);
 
-        mURLEditText = (EditText)findViewById(R.id.URL_editText);
-        mTitleTextView = (TextView)findViewById(R.id.result_textview);
+        mURLEditText = (EditText) findViewById(R.id.URL_editText);
+        mTitleTextView = (TextView) findViewById(R.id.result_textview);
 
     }
 
-    public void callWebserviceButtonHandler(View view){
-
-//        PingWebServiceTask task = new PingWebServiceTask();
-//        task.execute(mURLEditText.getText().toString());
-//
+    public void callWebserviceButtonHandler(View view) {
 
         Run p = new Run();
         new Thread(p).start();
@@ -51,12 +47,11 @@ public class ServiceActivity extends AppCompatActivity {
     }
 
 
-
-    private class PingWebServiceTask  extends AsyncTask<String, Integer, String[]> {
+    private class PingWebServiceTask extends AsyncTask<String, Integer, String[]> {
 
         @Override
         protected void onProgressUpdate(Integer... values) {
-            Log.i(TAG, "Making progress...");
+            Log.i(TAG, "");
         }
 
         @Override
@@ -66,25 +61,20 @@ public class ServiceActivity extends AppCompatActivity {
             String[] results = new String[2];
             URL url = null;
             try {
-
-//                url = new URL("https://jsonplaceholder.typicode.com/posts/1");
                 url = new URL(params[0]);
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
                 conn.setDoInput(true);
 
-                TextView result_view = (TextView)findViewById(R.id.result_textview);
+                TextView result_view = (TextView) findViewById(R.id.result_textview);
                 result_view.setText("Connecting");
                 conn.connect();
 
 
-
-                // Read response.
                 InputStream inputStream = conn.getInputStream();
                 final String resp = convertStreamToString(inputStream);
 
-//                JSONArray jArray = new JSONArray(resp);    // Use this if your web service returns an array of objects.  Arrays are in [ ] brackets.
                 JSONObject jObject = new JSONObject(resp);
                 String jTitle = jObject.getString("title");
                 String jBody = jObject.getString("body");
@@ -93,26 +83,26 @@ public class ServiceActivity extends AppCompatActivity {
                 return results;
 
             } catch (MalformedURLException e) {
-                Log.e(TAG,"MalformedURLException");
+                Log.e(TAG, "MalformedURLException");
                 e.printStackTrace();
             } catch (ProtocolException e) {
-                Log.e(TAG,"ProtocolException");
+                Log.e(TAG, "ProtocolException");
                 e.printStackTrace();
             } catch (IOException e) {
-                Log.e(TAG,"IOException");
+                Log.e(TAG, "IOException");
                 e.printStackTrace();
             } catch (JSONException e) {
-                Log.e(TAG,"JSONException");
+                Log.e(TAG, "JSONException");
                 e.printStackTrace();
             }
             results[0] = "Something went wrong";
-            return(results);
+            return (results);
         }
 
         @Override
         protected void onPostExecute(String... s) {
             super.onPostExecute(s);
-            TextView result_view = (TextView)findViewById(R.id.result_textview);
+            TextView result_view = (TextView) findViewById(R.id.result_textview);
             result_view.setText(s[0]);
         }
     }
